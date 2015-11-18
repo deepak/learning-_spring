@@ -4,18 +4,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="triangle" class="Triangle">
-        <!--<property name="type" value="isos"></property>-->
+        <property name="pointA" ref="point-0"></property>
+        <property name="pointB" ref="point-1"></property>
+        <property name="pointC" ref="point-1"></property>
+    </bean>
 
-        <constructor-arg name="type" value="iso" ></constructor-arg>
-        <constructor-arg name="height" value="10" ></constructor-arg>
+    <bean id="point-0" class="Point">
+        <property name="x" ref="origin-point-1" />
+        <property name="y" value="0" />
+    </bean>
 
-        <!--<constructor-arg type="java.lang.String" value="iso" ></constructor-arg>-->
-        <!--<constructor-arg type="java.lang.Integer" value="10" ></constructor-arg>-->
+    <bean id="point-1" class="Point">
+        <property name="x" value="0" />
+        <property name="y" value="20" />
+    </bean>
 
-        <!--<constructor-arg index="0" value="equi"></constructor-arg>-->
-        <!--<constructor-arg index="1" value="10"></constructor-arg>-->
+    <bean id="point-2" class="Point">
+        <property name="x" value="0" />
+        <property name="y" value="-20" />
+    </bean>
 
-        <!--<constructor-arg index="0" value="equi"></constructor-arg>-->
-        <!--<constructor-arg index="1" value="10" type="java.lang.Integer"></constructor-arg>-->
+    <bean id="origin-point-1" class="java.lang.Integer">
+        <constructor-arg value="11" />
     </bean>
 </beans>

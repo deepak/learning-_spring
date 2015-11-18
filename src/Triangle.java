@@ -1,49 +1,40 @@
 public class Triangle {
-    private String type;
-    private Integer height;
-    private String label;
+    private Point pointA, pointB, pointC;
 
-    public Triangle() {
+    public Point getPointA() {
+        return pointA;
     }
 
-    public Triangle(Integer height) {
-        this.height = height;
+    public void setPointA(Point pointA) {
+        this.pointA = pointA;
     }
 
-    public Triangle(String type) {
-        System.out.println("constructor called: " + type);
-        this.type = type;
+    public Point getPointB() {
+        return pointB;
     }
 
-    public Triangle(String type, Integer height) {
-        System.out.println("constructor called: " + type + " height: " + height);
-        this.type = type;
-        this.height = height;
+    public void setPointB(Point pointB) {
+        this.pointB = pointB;
     }
 
-    public Triangle(String type, String label) {
-        System.out.println("constructor called: " + type + " label: " + label);
-        this.type = type;
-        this.label = label;
+    public Point getPointC() {
+        return pointC;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public String getLabel() {
-        return label;
+    public void setPointC(Point pointC) {
+        this.pointC = pointC;
     }
 
     public void draw() {
-        System.out.println("draw " + type + " triangle (label: " + label + ") of height " + height);
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "pointA=" + pointA +
+                ", pointB=" + pointB +
+                ", pointC=" + pointC +
+                '}';
     }
 }
