@@ -4,7 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="triangle" class="Triangle" name="t1,t2">
+        <!-- ref can be id, name or alias -->
         <property name="pointA" ref="origin"></property>
+
+        <!--<property name="pointA">-->
+            <!--<idref bean="origin" />-->
+        <!--</property>-->
+
         <property name="pointB">
             <bean class="Point">
                 <property name="x" value="0" />
@@ -19,7 +25,7 @@
         </property>
     </bean>
 
-    <bean id="origin" class="Point">
+    <bean id="origin" class="Point" name="point-zero">
         <property name="x" value="0" />
         <property name="y" value="0" />
     </bean>
@@ -28,6 +34,7 @@
         <constructor-arg value="11" />
     </bean>
 
-    <alias name="triangle" alias="shape"/>
-    <alias name="t1" alias="s1"/>
+    <alias name="point-zero" alias="p0" />
+    <alias name="triangle" alias="shape" />
+    <alias name="t1" alias="s1" />
 </beans>
