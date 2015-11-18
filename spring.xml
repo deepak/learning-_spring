@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="triangle" class="Triangle">
+    <bean id="triangle" class="Triangle" name="t1,t2">
         <property name="pointA" ref="origin"></property>
         <property name="pointB">
             <bean class="Point">
@@ -27,4 +27,7 @@
     <bean id="measurement" class="java.lang.Integer">
         <constructor-arg value="11" />
     </bean>
+
+    <alias name="triangle" alias="shape"/>
+    <alias name="t1" alias="s1"/>
 </beans>
