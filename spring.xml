@@ -4,27 +4,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="triangle" class="Triangle">
-        <property name="pointA" ref="point-0"></property>
-        <property name="pointB" ref="point-1"></property>
-        <property name="pointC" ref="point-1"></property>
+        <property name="pointA" ref="origin"></property>
+        <property name="pointB">
+            <bean class="Point">
+                <property name="x" value="0" />
+                <property name="y" ref="measurement" />
+            </bean>
+        </property>
+        <property name="pointC">
+            <bean id="inner-bean" class="Point">
+                <property name="x" value="0" />
+                <property name="y" value="-20" />
+            </bean>
+        </property>
     </bean>
 
-    <bean id="point-0" class="Point">
-        <property name="x" ref="origin-point-1" />
+    <bean id="origin" class="Point">
+        <property name="x" value="0" />
         <property name="y" value="0" />
     </bean>
 
-    <bean id="point-1" class="Point">
-        <property name="x" value="0" />
-        <property name="y" value="20" />
-    </bean>
-
-    <bean id="point-2" class="Point">
-        <property name="x" value="0" />
-        <property name="y" value="-20" />
-    </bean>
-
-    <bean id="origin-point-1" class="java.lang.Integer">
+    <bean id="measurement" class="java.lang.Integer">
         <constructor-arg value="11" />
     </bean>
 </beans>
