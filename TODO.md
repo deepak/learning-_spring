@@ -14,3 +14,5 @@
   of the same scope ?
   can we reflect of the scope of the returned object ?
   no - i guess as we that that object, not a wrapper
+- take a look at other scopes. request, session, global, application
+  http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-factory-scopes
