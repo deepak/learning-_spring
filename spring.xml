@@ -21,4 +21,14 @@
         <property name="x" value="0" />
         <property name="y" value="-20" />
     </bean>
+
+    <bean id="person" class="Person" scope="prototype">
+        <constructor-arg name="name" value="deepak" />
+        <constructor-arg name="address" ref="address" />
+    </bean>
+
+    <bean id="address" class="Address">
+        <constructor-arg name="street" value="indira nagar" />
+        <constructor-arg name="pincode" value="123456" />
+    </bean>
 </beans>

@@ -17,5 +17,10 @@ public class Main {
         System.out.println("shapes are equal: " + shape1.equals(shape2));
         System.out.println("point in shapes are equal: " + shape1.getPointA().equals(shape2.getPointA()));
         System.out.println("points are equal: " + point1.equals(point2));
+
+        Person person1 = (Person) context.getBean("person");
+        Person person2 = (Person) context.getBean("person");
+        System.out.println("persons are equal: " + person1.equals(person2));
+        System.out.println("persons' addresses are equal: " + person1.getAddress().equals(person2.getAddress()));
     }
 }
