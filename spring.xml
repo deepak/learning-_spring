@@ -3,8 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="triangle" class="Triangle" autowire="constructor">
+    <bean id="triangle" class="Triangle">
         <constructor-arg name="pointA" ref="point-0" />
+        <constructor-arg name="pointB" ref="pointB" />
     </bean>
 
     <bean id="point-0" class="Point" scope="prototype">
@@ -19,6 +20,11 @@
 
     <bean id="pointC" class="Point">
         <property name="x" value="0" />
+        <property name="y" value="-20" />
+    </bean>
+
+    <bean id="pointX" class="Point">
+        <property name="x" value="30" />
         <property name="y" value="-20" />
     </bean>
 

@@ -16,3 +16,6 @@
   no - i guess as we that that object, not a wrapper
 - take a look at other scopes. request, session, global, application
   http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-factory-scopes
+- not sure where ApplicationContextAware would be useful
+  maybe in legacy applictions ?
+  where it needs some manual wiring and extra hand-holding
