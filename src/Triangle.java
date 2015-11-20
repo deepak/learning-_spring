@@ -3,15 +3,9 @@ public class Triangle {
     private Point pointB;
     private Point pointC;
 
-    public void setPointA(Point pointA) {
+    public Triangle(Point pointA, Point pointB, Point pointC) {
         this.pointA = pointA;
-    }
-
-    public void setPointB(Point pointB) {
         this.pointB = pointB;
-    }
-
-    public void setPointC(Point pointC) {
         this.pointC = pointC;
     }
 
