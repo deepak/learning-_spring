@@ -19,3 +19,4 @@
 - not sure where ApplicationContextAware would be useful
   maybe in legacy applictions ?
   where it needs some manual wiring and extra hand-holding
+  https://spring.io/understanding/application-context
