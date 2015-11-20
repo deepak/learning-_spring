@@ -27,7 +27,8 @@
         <property name="y" value="-20" />
     </bean>
 
-    <bean id="person" class="Person" scope="prototype" init-method="loadConfig">
+    <bean id="person" class="Person"
+          init-method="loadConfig" destroy-method="flushLogs">
         <constructor-arg name="name" value="deepak" />
         <property name="address" ref="address" />
     </bean>

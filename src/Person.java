@@ -8,7 +8,7 @@ public class Person {
     }
 
     public Person(String name) {
-        System.out.println("constructing person");
+        System.out.println("person created");
         this.name = name;
     }
 
@@ -35,5 +35,9 @@ public class Person {
 
     public void loadConfig() {
         System.out.println("load config from file");
+    }
+
+    public void flushLogs() {
+        System.out.println("flush logs");
     }
 }
