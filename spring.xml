@@ -27,9 +27,9 @@
         <property name="y" value="-20" />
     </bean>
 
-    <bean id="person" class="Person" scope="prototype">
+    <bean id="person" class="Person" scope="prototype" init-method="loadConfig">
         <constructor-arg name="name" value="deepak" />
-        <constructor-arg name="address" ref="address" />
+        <property name="address" ref="address" />
     </bean>
 
     <bean id="address" class="Address">
