@@ -20,3 +20,23 @@
   maybe in legacy applictions ?
   where it needs some manual wiring and extra hand-holding
   https://spring.io/understanding/application-context
+- order in which destroy hook is called is not deterministic
+
+  triangle created
+  Nov 20, 2015 5:44:36 PM org.springframework.context.support.FileSystemXmlApplicationContext doClose
+  INFO: Closing org.springframework.context.support.FileSystemXmlApplicationContext@67424e82: startup date [Fri Nov 20 17:44:35 IST 2015]; root of context hierarchy
+  Triangle{pointA=Point{x=0, y=0}, pointB=Point{x=0, y=11}, pointC=Point{x=0, y=-20}}
+  triangle destroyed
+
+  triangle created
+  Triangle{pointA=Point{x=0, y=0}, pointB=Point{x=0, y=11}, pointC=Point{x=0, y=-20}}
+  Nov 20, 2015 5:47:50 PM org.springframework.context.support.FileSystemXmlApplicationContext doClose
+  INFO: Closing org.springframework.context.support.FileSystemXmlApplicationContext@67424e82: startup date [Fri Nov 20 17:47:49 IST 2015]; root of context hierarchy
+  triangle destroyed
+
+  triangle created
+  Triangle{pointA=Point{x=0, y=0}, pointB=Point{x=0, y=11}, pointC=Point{x=0, y=-20}}
+  triangle destroyed
+  Nov 20, 2015 5:48:16 PM org.springframework.context.support.FileSystemXmlApplicationContext doClose
+  INFO: Closing org.springframework.context.support.FileSystemXmlApplicationContext@67424e82: startup date [Fri Nov 20 17:48:16 IST 2015]; root of context hierarchy
+

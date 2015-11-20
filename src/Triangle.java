@@ -1,4 +1,7 @@
-public class Triangle {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Triangle implements InitializingBean, DisposableBean {
     private Point pointA;
     private Point pointB;
     private Point pointC;
@@ -20,5 +23,17 @@ public class Triangle {
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +
                 '}';
+    }
+
+    // for InitializingBean
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("triangle created");
+    }
+
+    // for DisposableBean
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("triangle destroyed");
     }
 }
