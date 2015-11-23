@@ -3,12 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="triangle" class="Triangle">
+    <bean id="triangle" class="Triangle" init-method="init">
         <constructor-arg name="pointA" ref="origin" />
         <constructor-arg name="pointB" ref="pointB" />
-        <!--required processor is dumb. needs to called even it constructor is setting the property-->
-        <!--<constructor-arg name="pointC" ref="pointC" />-->
-        <property name="pointC" ref="pointC" />
     </bean>
 
     <bean id="origin" class="Point">
