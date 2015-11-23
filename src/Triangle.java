@@ -36,4 +36,12 @@ public class Triangle implements InitializingBean, DisposableBean {
     public void destroy() throws Exception {
         System.out.println("triangle destroyed");
     }
+
+    public void initHook() {
+        System.out.println("triangle initHook");
+    }
+
+    public void destroyHook() {
+        System.out.println("triangle destroyHook");
+    }
 }

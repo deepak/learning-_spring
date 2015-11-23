@@ -34,10 +34,10 @@ public class Person {
     }
 
     public void loadConfig() {
-        System.out.println("load config from file");
+        System.out.println("load person config from file");
     }
 
     public void flushLogs() {
-        System.out.println("flush logs");
+        System.out.println("flush logs for person");
     }
 }
