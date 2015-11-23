@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-       default-init-method="initHook" default-destroy-method="destroyHook">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="triangle-at-origin" class="Triangle" abstract="true">
+    <bean id="triangle" class="Triangle">
         <constructor-arg name="pointA" ref="origin" />
-    </bean>
-
-    <bean id="triangle" class="Triangle" parent="triangle-at-origin">
         <constructor-arg name="pointB" ref="pointB" />
         <constructor-arg name="pointC" ref="pointC" />
     </bean>
 
     <bean id="origin" class="Point">
-        <property name="x" value="0" />
-        <property name="y" value="0" />
+        <property name="x" value="${point.origin.x}" />
+        <property name="y" value="${point.origin.y}" />
     </bean>
 
     <bean id="pointB" class="Point">
@@ -28,14 +24,10 @@
         <property name="y" value="-20" />
     </bean>
 
-    <bean id="person" class="Person"
-          init-method="loadConfig" destroy-method="flushLogs">
-        <constructor-arg name="name" value="deepak" />
-        <property name="address" ref="address" />
+    <bean class="MyBeanProcessor" />
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="points.properties" />
     </bean>
 
-    <bean id="address" class="Address">
-        <constructor-arg name="street" value="indira nagar" />
-        <constructor-arg name="pincode" value="123456" />
-    </bean>
 </beans>

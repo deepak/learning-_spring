@@ -8,9 +8,7 @@ public class Main {
         context.registerShutdownHook();
 
         Triangle shape1 = (Triangle) context.getBean("triangle");
-        Person person = (Person) context.getBean("person");
 
         shape1.draw();
-        System.out.println(person);
     }
 }
