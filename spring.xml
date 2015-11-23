@@ -6,7 +6,9 @@
     <bean id="triangle" class="Triangle">
         <constructor-arg name="pointA" ref="origin" />
         <constructor-arg name="pointB" ref="pointB" />
-        <constructor-arg name="pointC" ref="pointC" />
+        <!--required processor is dumb. needs to called even it constructor is setting the property-->
+        <!--<constructor-arg name="pointC" ref="pointC" />-->
+        <property name="pointC" ref="pointC" />
     </bean>
 
     <bean id="origin" class="Point">
@@ -24,10 +26,9 @@
         <property name="y" value="-20" />
     </bean>
 
-    <bean class="MyBeanProcessor" />
-
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="points.properties" />
     </bean>
 
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 </beans>

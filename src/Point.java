@@ -5,6 +5,10 @@ public class Point {
         this.x = x;
     }
 
+    public Integer getX() {
+        return x;
+    }
+
     public void setY(Integer y) {
         this.y = y;
     }

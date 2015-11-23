@@ -1,7 +1,6 @@
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Required;
 
-public class Triangle implements InitializingBean, DisposableBean {
+public class Triangle implements Shape {
     private Point pointA;
     private Point pointB;
     private Point pointC;
@@ -9,6 +8,16 @@ public class Triangle implements InitializingBean, DisposableBean {
     public Triangle(Point pointA, Point pointB, Point pointC) {
         this.pointA = pointA;
         this.pointB = pointB;
+        this.pointC = pointC;
+    }
+
+    public Triangle(Point pointA, Point pointB) {
+        this.pointA = pointA;
+        this.pointB = pointB;
+    }
+
+    @Required
+    public void setPointC(Point pointC) {
         this.pointC = pointC;
     }
 
@@ -22,26 +31,6 @@ public class Triangle implements InitializingBean, DisposableBean {
                 "pointA=" + pointA +
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +
-                '}';
-    }
-
-    // for InitializingBean
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("triangle created");
-    }
-
-    // for DisposableBean
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("triangle destroyed");
-    }
-
-    public void initHook() {
-        System.out.println("triangle initHook");
-    }
-
-    public void destroyHook() {
-        System.out.println("triangle destroyHook");
+                '}' + " next x: " + (pointC.getX() + 1);
     }
 }
