@@ -1,5 +1,6 @@
 package org.deepak.springdemo;
 
+import org.deepak.springdemo.mailer.BlacklistEvent;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

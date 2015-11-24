@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.mailer;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -28,6 +28,8 @@ public class EmailService implements ApplicationEventPublisherAware {
             publisher.publishEvent(blacklistEvent);
         } else {
             System.out.println("emailing " + text);
+            MailEvent mailEvent = new MailEvent(this, address, text);
+            publisher.publishEvent(mailEvent);
         }
     }
 }

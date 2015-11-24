@@ -1,6 +1,6 @@
 package org.deepak.springdemo;
 
-import org.springframework.context.MessageSource;
+import org.deepak.springdemo.mailer.EmailService;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 

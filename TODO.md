@@ -52,4 +52,3 @@
   how to maintain common translations ?
   how to typecheck the translation keys. ie. rather than throwing a NoSuchMessageException at runtime
   compiler typechecks at compile time that message key does not exist ?
-- can listen to an event of a specific class. can we listen to two classes in a single listener ?

@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.mailer;
 
 import org.springframework.context.ApplicationEvent;
 
