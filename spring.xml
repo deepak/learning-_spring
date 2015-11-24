@@ -19,7 +19,6 @@
     </bean>
 
     <bean id="origin" class="Point">
-        <qualifier value="circlePoint" />
         <property name="x" value="${point.origin.x}" />
         <property name="y" value="${point.origin.y}" />
     </bean>

@@ -1,12 +1,11 @@
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.annotation.Resource;
 
 public class Circle implements Shape {
 
     private Point center;
 
-    @Autowired
-    public Circle(@Qualifier("circlePoint") Point center) {
+    @Resource(name = "pointC")
+    public void setCenter(Point center) {
         this.center = center;
     }
 
