@@ -69,3 +69,6 @@
 
   refactored to move it under the namespace simple
   so changed to org.deepak.springdemo.di.resources.messages
+- how/can we convert the whole of spring.xml, other than context
+  into AppConfig using the @Configuration annotation
+  read http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-autowired-annotation-qualifiers
