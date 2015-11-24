@@ -40,3 +40,13 @@
   Nov 20, 2015 5:48:16 PM org.springframework.context.support.FileSystemXmlApplicationContext doClose
   INFO: Closing org.springframework.context.support.FileSystemXmlApplicationContext@67424e82: startup date [Fri Nov 20 17:48:16 IST 2015]; root of context hierarchy
 
+- MessageSource has some rules
+  - argument needs to be a string, cannot pass-in an object
+    eg. cannot pass a Point and prnt it out
+  - can we have maps as arguments ie. like keyword arguments ?
+  - can we pass anything other than Object[], array of a different class, generics, list etc ?
+  need to escape { with single quotes ie. '{'
+  http://www.mscharhag.com/java/resource-bundle-single-quote-escaping
+  what is the importance of MessageSource being a java resource bundle ?
+  what is a good/widely-used lib for I18n in spring ?
+  how to maintain common translations ?

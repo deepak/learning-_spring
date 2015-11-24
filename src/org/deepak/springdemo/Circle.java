@@ -1,15 +1,21 @@
 package org.deepak.springdemo;
 
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
+import java.util.Locale;
 
 @Component
 public class Circle implements Shape {
 
     private Point center;
+    private MessageSource messageSource;
+
+    @Resource
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Resource(name = "pointC")
     public void setCenter(Point center) {
@@ -21,20 +27,11 @@ public class Circle implements Shape {
         System.out.println(this);
     }
 
-    @PostConstruct
-    public void afterInit() {
-        System.out.println("init circle");
-    }
-
-    @PreDestroy
-    public void beforeDestroy() {
-        System.out.println("destroying circle");
-    }
-
     @Override
     public String toString() {
-        return "org.deepak.springdemo.Circle{" +
-                "center=" + center +
-                '}';
+        String message = messageSource.getMessage("circle.draw",
+                new Object[] { center.getX(), center.getX() },
+                Locale.FRENCH);
+        return message;
     }
 }

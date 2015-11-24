@@ -31,5 +31,13 @@
         <property name="y" value="-20" />
     </bean>
 
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>org.deepak.springdemo.resources.messages</value>
+            </list>
+        </property>
+    </bean>
+
     <context:property-placeholder location="points.properties" />
 </beans>
