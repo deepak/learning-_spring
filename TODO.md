@@ -52,3 +52,7 @@
   how to maintain common translations ?
   how to typecheck the translation keys. ie. rather than throwing a NoSuchMessageException at runtime
   compiler typechecks at compile time that message key does not exist ?
+- if a class has multiple Listeners, how to stop the same event from being processed by the same class
+  ie. BlacklistEvent < ApplicationEvent
+  and if we have a listener for both
+  then both will read the event.

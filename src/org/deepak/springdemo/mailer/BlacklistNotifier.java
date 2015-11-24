@@ -1,5 +1,6 @@
 package org.deepak.springdemo.mailer;
 
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -14,5 +15,10 @@ public class BlacklistNotifier {
     @EventListener
     public void processMailEvent(MailEvent mailEvent) {
         System.out.println("---> email sent: " + mailEvent);
+    }
+
+    @EventListener
+    public void processEvent(ApplicationEvent event) {
+        System.out.println("---> event: " + event);
     }
 }
