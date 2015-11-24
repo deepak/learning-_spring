@@ -1,3 +1,7 @@
+package org.deepak.springdemo;
+
+import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -28,7 +32,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "Circle{" +
+        return "org.deepak.springdemo.Circle{" +
                 "center=" + center +
                 '}';
     }

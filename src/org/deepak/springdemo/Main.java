@@ -1,3 +1,5 @@
+package org.deepak.springdemo;
+
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
