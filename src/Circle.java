@@ -1,3 +1,5 @@
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 public class Circle implements Shape {
@@ -12,6 +14,16 @@ public class Circle implements Shape {
     @Override
     public void draw() {
         System.out.println(this);
+    }
+
+    @PostConstruct
+    public void afterInit() {
+        System.out.println("init circle");
+    }
+
+    @PreDestroy
+    public void beforeDestroy() {
+        System.out.println("destroying circle");
     }
 
     @Override
