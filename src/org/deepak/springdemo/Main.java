@@ -17,5 +17,8 @@ public class Main {
 
         String welcome = messageSource.getMessage("welcome", null, "default welcome", null);
         System.out.println(welcome);
+
+        LogEvent logEvent = new LogEvent(shape);
+        context.publishEvent(logEvent);
     }
 }
