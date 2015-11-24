@@ -9,7 +9,11 @@ public class AllEventsListener implements ApplicationListener {
 
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
-        System.out.println("===> Event: " + applicationEvent);
+        if (applicationEvent instanceof BlacklistEvent) {
+            System.out.println("===> Blacklist is handled in its listener");
+        } else {
+            System.out.println("===> Event: " + applicationEvent);
+        }
     }
 
 }

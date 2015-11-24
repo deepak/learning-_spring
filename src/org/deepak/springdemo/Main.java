@@ -11,14 +11,11 @@ public class Main {
         context.registerShutdownHook();
 
         Shape shape = (Shape) context.getBean("circle");
-        MessageSource messageSource = (MessageSource) context.getBean("messageSource");
-
-        shape.draw();
-
-        String welcome = messageSource.getMessage("welcome", null, "default welcome", null);
-        System.out.println(welcome);
-
         LogEvent logEvent = new LogEvent(shape);
         context.publishEvent(logEvent);
+
+        EmailService emailService = (EmailService) context.getBean("emailService");
+        emailService.sendEmail("spammer1@example.com", "goodbye spam");
+        emailService.sendEmail("user@example.com", "hello");
     }
 }
