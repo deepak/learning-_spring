@@ -10,23 +10,23 @@
     <context:annotation-config />
     <context:component-scan base-package="org.deepak.springdemo" />
 
-    <bean id="triangle" class="org.deepak.springdemo.Triangle">
+    <bean id="triangle" class="org.deepak.springdemo.di.Triangle">
         <constructor-arg name="pointA" ref="origin" />
         <constructor-arg name="pointB" ref="pointB" />
         <constructor-arg name="pointC" ref="pointC" />
     </bean>
 
-    <bean id="origin" class="org.deepak.springdemo.Point">
+    <bean id="origin" class="org.deepak.springdemo.di.Point">
         <property name="x" value="${point.origin.x}" />
         <property name="y" value="${point.origin.y}" />
     </bean>
 
-    <bean id="pointB" class="org.deepak.springdemo.Point">
+    <bean id="pointB" class="org.deepak.springdemo.di.Point">
         <property name="x" value="0" />
         <property name="y" value="11" />
     </bean>
 
-    <bean id="pointC" class="org.deepak.springdemo.Point">
+    <bean id="pointC" class="org.deepak.springdemo.di.Point">
         <property name="x" value="0" />
         <property name="y" value="-20" />
     </bean>
@@ -34,12 +34,12 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>org.deepak.springdemo.resources.messages</value>
+                <value>org.deepak.springdemo.di.resources.messages</value>
             </list>
         </property>
     </bean>
 
-    <context:property-placeholder location="points.properties" />
+    <context:property-placeholder location="classpath:org/deepak/springdemo/di/resources/points.properties" />
 
     <util:list id="spammers" value-type="java.lang.String">
         <value>spammer1@example.com</value>

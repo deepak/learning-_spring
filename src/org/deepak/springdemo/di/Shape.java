@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.di;
 
 public interface Shape {
     public void draw();

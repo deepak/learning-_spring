@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.di;
 
 public class Point {
     private Integer x,y;
@@ -17,7 +17,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "org.deepak.springdemo.Point{" +
+        return "Point{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

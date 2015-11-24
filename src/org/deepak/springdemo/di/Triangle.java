@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.di;
 
 import org.springframework.beans.factory.BeanInitializationException;
 
@@ -35,7 +35,7 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "org.deepak.springdemo.Triangle{" +
+        return "Triangle{" +
                 "pointA=" + pointA +
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +

@@ -56,3 +56,16 @@
   ie. BlacklistEvent < ApplicationEvent
   and if we have a listener for both
   then both will read the event.
+- refactoring did not pick up config in spring xml
+
+  bean config was:
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames">
+      <list>
+        <value>org.deepak.springdemo.resources.messages</value>
+      </list>
+    </property>
+  </bean>
+
+  refactored to move it under the namespace simple
+  so changed to org.deepak.springdemo.di.resources.messages

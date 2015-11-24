@@ -1,4 +1,4 @@
-package org.deepak.springdemo;
+package org.deepak.springdemo.di;
 
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
