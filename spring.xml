@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="triangle" class="Triangle" init-method="init">
+    <context:annotation-config />
+
+    <bean id="triangle" class="Triangle">
         <constructor-arg name="pointA" ref="origin" />
         <constructor-arg name="pointB" ref="pointB" />
+        <constructor-arg name="pointC" ref="pointC" />
+    </bean>
+
+    <bean id="circle" class="Circle">
     </bean>
 
     <bean id="origin" class="Point">
+        <qualifier value="circlePoint" />
         <property name="x" value="${point.origin.x}" />
         <property name="y" value="${point.origin.y}" />
     </bean>
@@ -26,6 +37,4 @@
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="points.properties" />
     </bean>
-
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 </beans>

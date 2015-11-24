@@ -7,8 +7,8 @@ public class Main {
         AbstractApplicationContext context = new FileSystemXmlApplicationContext("spring.xml");
         context.registerShutdownHook();
 
-        Shape shape1 = (Shape) context.getBean("triangle");
+        Shape shape = (Shape) context.getBean("circle");
 
-        shape1.draw();
+        shape.draw();
     }
 }
