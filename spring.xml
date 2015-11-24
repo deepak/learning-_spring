@@ -8,14 +8,13 @@
          http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
+    <context:component-scan base-package="org.deepak.springdemo" />
 
     <bean id="triangle" class="org.deepak.springdemo.Triangle">
         <constructor-arg name="pointA" ref="origin" />
         <constructor-arg name="pointB" ref="pointB" />
         <constructor-arg name="pointC" ref="pointC" />
     </bean>
-
-    <bean id="circle" class="org.deepak.springdemo.Circle" />
 
     <bean id="origin" class="org.deepak.springdemo.Point">
         <property name="x" value="${point.origin.x}" />
