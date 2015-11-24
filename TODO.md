@@ -50,3 +50,5 @@
   what is the importance of MessageSource being a java resource bundle ?
   what is a good/widely-used lib for I18n in spring ?
   how to maintain common translations ?
+  how to typecheck the translation keys. ie. rather than throwing a NoSuchMessageException at runtime
+  compiler typechecks at compile time that message key does not exist ?
