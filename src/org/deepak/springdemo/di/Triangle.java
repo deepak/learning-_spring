@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.annotation.Resource;
 
+// works at runtime. but Intellij throws a warning
+// Class doesn't contain matching constructor for autowiring
 public class Triangle implements Shape {
     private Point pointA;
     private Point pointB;
@@ -33,6 +35,8 @@ public class Triangle implements Shape {
         }
     }
 
+    // works at runtime. but Intellij throws a warning
+    // Could not autowire. No beans of 'String' type found.
     @Resource
     public void setShapeName(@Value("${shape.triangle.name}") String shapeName) {
         this.shapeName = shapeName;
