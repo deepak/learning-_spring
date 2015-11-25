@@ -1,11 +1,15 @@
 package org.deepak.springdemo.di;
 
 import org.springframework.beans.factory.BeanInitializationException;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.annotation.Resource;
 
 public class Triangle implements Shape {
     private Point pointA;
     private Point pointB;
     private Point pointC;
+    private String shapeName;
 
     public Triangle(Point pointA, Point pointB, Point pointC) {
         this.pointA = pointA;
@@ -29,13 +33,18 @@ public class Triangle implements Shape {
         }
     }
 
+    @Resource
+    public void setShapeName(@Value("${shape.triangle.name}") String shapeName) {
+        this.shapeName = shapeName;
+    }
+
     public void setPointC(Point pointC) {
         this.pointC = pointC;
     }
 
     @Override
     public String toString() {
-        return "Triangle{" +
+        return shapeName + '{' +
                 "pointA=" + pointA +
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +

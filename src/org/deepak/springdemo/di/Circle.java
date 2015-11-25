@@ -1,5 +1,6 @@
 package org.deepak.springdemo.di;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ public class Circle implements Shape {
 
     private Point center;
     private MessageSource messageSource;
+    private String shapeName;
 
     @Resource
     public void setMessageSource(MessageSource messageSource) {

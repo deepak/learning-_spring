@@ -34,7 +34,9 @@
         </property>
     </bean>
 
-    <context:property-placeholder location="classpath:org/deepak/springdemo/di/resources/points.properties" />
+    <context:property-placeholder
+            location="classpath:org/deepak/springdemo/di/resources/points.properties,
+                      classpath:org/deepak/springdemo/di/resources/shape.properties" />
 
     <util:list id="spammers" value-type="java.lang.String">
         <value>spammer1@example.com</value>
