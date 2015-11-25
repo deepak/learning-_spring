@@ -74,3 +74,5 @@
   read http://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-autowired-annotation-qualifiers
 - what is the unicode situation in property files, \u<code> worked for me
   http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle
+- how to load config from ENV variable eg. in jdbc.properties
+  for deploying on heroku. 12factor deployment

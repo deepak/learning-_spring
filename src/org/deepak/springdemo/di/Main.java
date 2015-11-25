@@ -1,5 +1,6 @@
 package org.deepak.springdemo.di;
 
+import org.deepak.springdemo.db.OfferDAO;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -9,10 +10,7 @@ public class Main {
         AbstractApplicationContext context = new FileSystemXmlApplicationContext("spring.xml");
         context.registerShutdownHook();
 
-        Shape triangle = (Shape) context.getBean("triangle");
-        triangle.draw();
-
-        Shape circle = (Shape) context.getBean("circle");
-        circle.draw();
+        OfferDAO offerDAO = (OfferDAO) context.getBean("offerDAO");
+        System.out.println("offers: " + offerDAO.getOffers());
     }
 }

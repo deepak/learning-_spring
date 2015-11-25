@@ -36,7 +36,8 @@
 
     <context:property-placeholder
             location="classpath:org/deepak/springdemo/di/resources/points.properties,
-                      classpath:org/deepak/springdemo/di/resources/shape.properties" />
+                      classpath:org/deepak/springdemo/di/resources/shape.properties,
+                      classpath:org/deepak/springdemo/db/resources/jdbc.properties" />
 
     <util:list id="spammers" value-type="java.lang.String">
         <value>spammer1@example.com</value>

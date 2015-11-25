@@ -10,6 +10,7 @@
 
 # Package Files #
 *.jar
+!lib/*
 *.war
 *.ear
 
