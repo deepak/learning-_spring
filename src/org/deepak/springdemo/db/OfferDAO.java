@@ -58,6 +58,14 @@ public class OfferDAO {
                 params, rowMapper);
     }
 
+    public boolean deleteOffer(int id) {
+        // how to do "delete IN" ?
+        // delete from offers where id IN (2, 3)
+        MapSqlParameterSource params = new MapSqlParameterSource("id", id);
+        int deletedCount = jdbc.update("delete from offers where id = :id", params);
+        return deletedCount == 1;
+    }
+
     @Resource
     public void setDataSource(@Value("dataSource") DataSource jdbc) {
         this.jdbc = new NamedParameterJdbcTemplate(jdbc);

@@ -81,3 +81,5 @@
   returns an error
   class org.springframework.dao.DataIntegrityViolationException StatementCallback; Multiple ResultSets were returned by the query.;
   nested exception is org.postgresql.util.PSQLException: Multiple ResultSets were returned by the query.
+- how to do "delete IN" ?
+  delete from offers where id IN (2, 3)

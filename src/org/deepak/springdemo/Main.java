@@ -18,6 +18,7 @@ public class Main {
             System.out.println("all offers: " + offerDAO.getOffers());
             System.out.println("html offers: " + offerDAO.getHtmlOffers());
             System.out.println("offer: " + offerDAO.getOffer(1));
+            System.out.println("deleted :" + offerDAO.deleteOffer(3));
         }
         catch (DataAccessException e) {
             System.out.println(e.getClass() + " " + e.getMessage());
