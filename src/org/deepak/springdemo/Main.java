@@ -1,5 +1,6 @@
 package org.deepak.springdemo;
 
+import org.deepak.springdemo.db.Offer;
 import org.deepak.springdemo.db.OfferDAO;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -19,6 +20,8 @@ public class Main {
             System.out.println("html offers: " + offerDAO.getHtmlOffers());
             System.out.println("offer: " + offerDAO.getOffer(1));
             System.out.println("deleted :" + offerDAO.deleteOffer(3));
+            Offer offer = new Offer("thanksgiving", "user@example.com", "black friday deal");
+            System.out.println(offerDAO.createOffer(offer));
         }
         catch (DataAccessException e) {
             System.out.println(e.getClass() + " " + e.getMessage());

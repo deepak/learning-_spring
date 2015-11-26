@@ -2,6 +2,7 @@ package org.deepak.springdemo.db;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -64,6 +65,13 @@ public class OfferDAO {
         MapSqlParameterSource params = new MapSqlParameterSource("id", id);
         int deletedCount = jdbc.update("delete from offers where id = :id", params);
         return deletedCount == 1;
+    }
+
+    public boolean createOffer(Offer offer) {
+        BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
+        int insertCount = jdbc.update("insert into offers (name, email, text) values (:name, :email, :text)",
+                params);
+        return insertCount == 1;
     }
 
     @Resource

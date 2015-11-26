@@ -7,7 +7,11 @@ public class Offer {
     private String text;
 
     public Offer(Integer id, String name, String email, String text) {
+        this(name, email, text);
         this.id = id;
+    }
+
+    public Offer(String name, String email, String text) {
         this.name = name;
         this.email = email;
         this.text = text;
