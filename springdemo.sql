@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS offers(id SERIAL UNIQUE, name varchar(100), email varchar(60), text text);
+CREATE TABLE IF NOT EXISTS offers(id SERIAL PRIMARY KEY, name varchar(100), email varchar(60), text text);
 
 -- TRUNCATE offers RESTART IDENTITY;
 

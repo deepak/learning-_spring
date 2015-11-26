@@ -2,9 +2,7 @@ package org.deepak.springdemo.db;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.*;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
@@ -21,6 +19,8 @@ import java.util.Optional;
 public class OfferDAO {
     private NamedParameterJdbcTemplate jdbc;
     private RowMapper<Offer> rowMapper;
+    private final String insertSql = "INSERT INTO offers (name, email, text) VALUES (:name, :email, :text)";
+
 
     public OfferDAO() {
         this.rowMapper = new RowMapper<Offer>() {
@@ -73,8 +73,13 @@ public class OfferDAO {
 
 
     public Optional<Offer> createOffer(Offer offer) {
-        String sql = "insert into offers (name, email, text) values (:name, :email, :text)";
-        return updateWithSql(offer, sql);
+        return updateWithSql(offer, insertSql);
+    }
+
+    public int[] createOffer(List<Offer> offers) {
+        SqlParameterSource[] params =
+                SqlParameterSourceUtils.createBatch(offers.toArray());
+        return jdbc.batchUpdate(insertSql, params);
     }
 
     // TODO: bad api. offer.id should not be nil. how to enforce this ?

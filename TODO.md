@@ -85,3 +85,17 @@
   delete from offers where id IN (2, 3)
 - try simple jdbc queries. check org.springframework.jdbc.core.JdbcOperations
   from NamedParameterJdbcTemplate#getJdbcOperations()
+- how to low sql statement being executed by driver ?
+  any sql (postgres) proxy which can be used for debugging ?
+- bulk insert in jdbc gives the status for each record
+  while the ruby adapter, gives the first returned id
+  and even psql gives something weird
+  eg. in psql > input: INSERT INTO offers (name, email, text) VALUES ('bulk1', 'user1@example.com', 'bulk-ad-1'), ('bulk2', 'user1@example.com', 'bulk-ad-2');
+              > output: INSERT 0 2
+  how does jdbc does that and why the ruby driver does not ?
+
+  ruby code:
+  ActiveRecord::Base.establish_connection(adapter: 'postgresql', encoding: 'unicode', pool: 1, database: 'springdemo')
+  class Offer < ActiveRecord::Base; end
+  Offer.connection.insert_sql "INSERT INTO offers (name, email, text) VALUES ('bulk1', 'user1@example.com', 'bulk-ad-1')"
+  the pg driver gets the currval of the sequence. how does jdbc do it ?
