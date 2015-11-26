@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -12,6 +14,8 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class OfferDAO {
@@ -42,7 +46,7 @@ public class OfferDAO {
         params.addValue("name", "html");
         params.addValue("email", "user1@example.com");
 
-        // how will sql injection work here
+        // how will sql injection work here ?
         // query: "select id, name, email, text from offers where id='1'; delete from offers where id='2'"
         // returns an error
         // class org.springframework.dao.DataIntegrityViolationException StatementCallback; Multiple ResultSets were returned by the query.;
@@ -67,11 +71,40 @@ public class OfferDAO {
         return deletedCount == 1;
     }
 
-    public boolean createOffer(Offer offer) {
+
+    public Optional<Offer> createOffer(Offer offer) {
+        KeyHolder holder = new GeneratedKeyHolder();
         BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
         int insertCount = jdbc.update("insert into offers (name, email, text) values (:name, :email, :text)",
-                params);
-        return insertCount == 1;
+                params, holder);
+        boolean insertStatus = insertCount == 1;
+        return offerFromKeyHolder(holder, insertStatus);
+    }
+
+    // TODO: bad api. offer.id should not be nil. how to enforce this ?
+    public Optional<Offer> updateOffer(Offer offer) {
+        KeyHolder holder = new GeneratedKeyHolder();
+        BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
+        int updateCount = jdbc.update("UPDATE offers SET name=:name, email=:email, text=:text WHERE id=:id",
+                params, holder);
+        boolean updateStatus = updateCount == 1;
+        return offerFromKeyHolder(holder, updateStatus);
+    }
+
+    private Optional<Offer> offerFromKeyHolder(KeyHolder holder, boolean status) {
+        Offer offer = null;
+
+        if (status) {
+            Map<String, Object> keys = holder.getKeys();
+            Integer id = (Integer) keys.get("id");
+            String name = (String) keys.get("name");
+            String email = (String) keys.get("email");
+            String text = (String) keys.get("text");
+            offer = new Offer(id, name, email, text);
+        }
+
+        Optional<Offer> offerMaybe = Optional.ofNullable(offer);
+        return offerMaybe;
     }
 
     @Resource
