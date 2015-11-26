@@ -28,7 +28,7 @@ public class Main {
 
             newOffer.setName("turkey thanksgiving");
             newOffer.setText("awesome blackfriday deals");
-            System.out.println("updated: " + offerDAO.updateOffer(newOffer));
+            System.out.println("updated: " + offerDAO.updateOffer(newOffer).get());
         }
         catch (DataAccessException e) {
             System.out.println(e.getClass() + " " + e.getMessage());

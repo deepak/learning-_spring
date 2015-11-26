@@ -73,20 +73,20 @@ public class OfferDAO {
 
 
     public Optional<Offer> createOffer(Offer offer) {
-        KeyHolder holder = new GeneratedKeyHolder();
-        BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
-        int insertCount = jdbc.update("insert into offers (name, email, text) values (:name, :email, :text)",
-                params, holder);
-        boolean insertStatus = insertCount == 1;
-        return offerFromKeyHolder(holder, insertStatus);
+        String sql = "insert into offers (name, email, text) values (:name, :email, :text)";
+        return updateWithSql(offer, sql);
     }
 
     // TODO: bad api. offer.id should not be nil. how to enforce this ?
     public Optional<Offer> updateOffer(Offer offer) {
+        String sql = "UPDATE offers SET name=:name, email=:email, text=:text WHERE id=:id";
+        return updateWithSql(offer, sql);
+    }
+
+    private Optional<Offer> updateWithSql(Offer offer, String sql) {
         KeyHolder holder = new GeneratedKeyHolder();
         BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
-        int updateCount = jdbc.update("UPDATE offers SET name=:name, email=:email, text=:text WHERE id=:id",
-                params, holder);
+        int updateCount = jdbc.update(sql, params, holder);
         boolean updateStatus = updateCount == 1;
         return offerFromKeyHolder(holder, updateStatus);
     }
