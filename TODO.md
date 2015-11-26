@@ -76,3 +76,8 @@
   http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle
 - how to load config from ENV variable eg. in jdbc.properties
   for deploying on heroku. 12factor deployment
+- how will sql-injection work in JdbcTemplate#query
+  query: "select id, name, email, text from offers where id='1'; delete from offers where id='2'"
+  returns an error
+  class org.springframework.dao.DataIntegrityViolationException StatementCallback; Multiple ResultSets were returned by the query.;
+  nested exception is org.postgresql.util.PSQLException: Multiple ResultSets were returned by the query.

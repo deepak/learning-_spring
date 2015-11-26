@@ -1,4 +1,4 @@
-package org.deepak.springdemo.di;
+package org.deepak.springdemo;
 
 import org.deepak.springdemo.db.OfferDAO;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -12,12 +12,12 @@ public class Main {
         AbstractApplicationContext context = new FileSystemXmlApplicationContext("spring.xml");
         context.registerShutdownHook();
 
+        OfferDAO offerDAO = (OfferDAO) context.getBean("offerDAO");
+
         try {
-            OfferDAO offerDAO = (OfferDAO) context.getBean("offerDAO");
-            System.out.println("offers: " + offerDAO.getOffers());
-        }
-        catch (CannotGetJdbcConnectionException ce) {
-            System.out.println(ce.getMessage());
+            System.out.println("all offers: " + offerDAO.getOffers());
+            System.out.println("html offers: " + offerDAO.getHtmlOffers());
+            System.out.println("offer: " + offerDAO.getOffer(1));
         }
         catch (DataAccessException e) {
             System.out.println(e.getClass() + " " + e.getMessage());
