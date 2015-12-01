@@ -79,7 +79,10 @@ public class OfferDAO {
     public int[] createOffer(List<Offer> offers) {
         SqlParameterSource[] params =
                 SqlParameterSourceUtils.createBatch(offers.toArray());
-        return jdbc.batchUpdate(insertSql, params);
+        return jdbc.batchUpdate("INSERT INTO offers (id, name, email, text) VALUES (:id, :name, :email, :text)", params);
+//        for (Offer o: offers) {
+//            createOffer(o);
+//        }
     }
 
     // TODO: bad api. offer.id should not be nil. how to enforce this ?

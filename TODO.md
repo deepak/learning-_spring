@@ -99,3 +99,6 @@
   class Offer < ActiveRecord::Base; end
   Offer.connection.insert_sql "INSERT INTO offers (name, email, text) VALUES ('bulk1', 'user1@example.com', 'bulk-ad-1')"
   the pg driver gets the currval of the sequence. how does jdbc do it ?
+- batchUpdate (a single batchUpdate call with multiple records)  is being wrapped in a transaction by default.
+  but does not happen when we manually loop over the list and insert it one-by-one
+  how and why ?
