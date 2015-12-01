@@ -6,11 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.sql.SQLException;
 
 @Configuration
-// @EnableTransactionManagement
+@EnableTransactionManagement
 public class DbAppConfig {
 
     @Bean
