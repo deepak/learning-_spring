@@ -19,12 +19,19 @@ public class Main {
         OfferDAO offerDAO = (OfferDAO) context.getBean("offerDAO");
 
         try {
-            Offer newOffer1 = new Offer(3, "thanksgiving", "user@example.com", "black friday deal");
-            Offer newOffer2 = new Offer(2, "new year", "user@example.com", "for a happy new year");
-            List<Offer> offers = new ArrayList<Offer>(Arrays.asList(newOffer1, newOffer2));
+            Offer newOffer1 = new Offer(4, "thanksgiving", "user@example.com", "black friday deal");
+            Offer newOffer2 = new Offer(5, "new year", "user@example.com", "for a happy new year");
+            List<Offer> offers1 = new ArrayList<Offer>(Arrays.asList(newOffer1, newOffer2));
 
-            int[] createOffers = offerDAO.createOffer(offers);
-            System.out.println("bulk create: " + Arrays.toString(createOffers));
+            Offer newOffer3 = new Offer(4, "thanksgiving", "user@example.com", "black friday deal");
+            Offer newOffer4 = new Offer(6, "new year", "user@example.com", "for a happy new year");
+            List<Offer> offers2 = new ArrayList<Offer>(Arrays.asList(newOffer3, newOffer4));
+
+            int[] createOffers1 = offerDAO.createOffer(offers1);
+            System.out.println("bulk create: " + Arrays.toString(createOffers1));
+
+            int[] createOffers2 = offerDAO.createOffer(offers2);
+            System.out.println("bulk create: " + Arrays.toString(createOffers2));
         }
         catch (DataAccessException e) {
             System.out.println(e.getClass() + " " + e.getMessage());
