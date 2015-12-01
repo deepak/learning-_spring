@@ -88,6 +88,7 @@ public class OfferDAO {
     // without the @Transactional annotation, the first batchUpdate (in createOffer) will succeed
     // and the second with fail, but db will have 2 records. with this annotation however
     // db inserts will be transactional and no records will be inserted
+    // this annotation is sufficient, do not need it on createOffer as well
     @Transactional
     public void createOffersInBatches() {
         Offer newOffer1 = new Offer(4, "thanksgiving", "user@example.com", "black friday deal");
