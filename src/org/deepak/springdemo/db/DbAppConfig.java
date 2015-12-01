@@ -18,7 +18,7 @@ public class DbAppConfig {
     @Bean
     public BasicDataSource dataSource(@Value("${jdbc.driver}")   String driverName,
                                       @Value("${jdbc.url}")      String url,
-                                      @Value("${jdbc.user}")     String userName,
+                                      @Value("${jdbc.user:deepak}")     String userName,
                                       @Value("${jdbc.password}") String password) {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(driverName);
