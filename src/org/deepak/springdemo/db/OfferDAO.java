@@ -6,14 +6,13 @@ import org.springframework.jdbc.core.namedparam.*;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class OfferDAO {
@@ -76,6 +75,7 @@ public class OfferDAO {
         return updateWithSql(offer, insertSql);
     }
 
+    @Transactional
     public int[] createOffer(List<Offer> offers) {
         SqlParameterSource[] params =
                 SqlParameterSourceUtils.createBatch(offers.toArray());
@@ -83,6 +83,26 @@ public class OfferDAO {
 //        for (Offer o: offers) {
 //            createOffer(o);
 //        }
+    }
+
+    // without the @Transactional annotation, the first batchUpdate (in createOffer) will succeed
+    // and the second with fail, but db will have 2 records. with this annotation however
+    // db inserts will be transactional and no records will be inserted
+    @Transactional
+    public void createOffersInBatches() {
+        Offer newOffer1 = new Offer(4, "thanksgiving", "user@example.com", "black friday deal");
+        Offer newOffer2 = new Offer(5, "new year", "user@example.com", "for a happy new year");
+        List<Offer> offers1 = new ArrayList<Offer>(Arrays.asList(newOffer1, newOffer2));
+
+        Offer newOffer3 = new Offer(4, "thanksgiving", "user@example.com", "black friday deal");
+        Offer newOffer4 = new Offer(6, "new year", "user@example.com", "for a happy new year");
+        List<Offer> offers2 = new ArrayList<Offer>(Arrays.asList(newOffer3, newOffer4));
+
+        int[] createOffers1 = createOffer(offers1);
+        System.out.println("bulk create: " + Arrays.toString(createOffers1));
+
+        int[] createOffers2 = createOffer(offers2);
+        System.out.println("bulk create: " + Arrays.toString(createOffers2));
     }
 
     // TODO: bad api. offer.id should not be nil. how to enforce this ?
